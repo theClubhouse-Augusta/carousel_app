@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::view('admin', 'admin');
 
 Route::view('test', 'test');
+
+Route::get('controller/invoke', 'TestInvoke');
+
+Route::get('controller/{id}', 'TestController@show');
