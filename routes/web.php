@@ -22,3 +22,5 @@ Route::view('test', 'test');
 Route::get('controller/invoke', 'TestInvoke');
 
 Route::get('controller/{id}', 'TestController@show');
+
+Route::resource('image', 'ImageController');

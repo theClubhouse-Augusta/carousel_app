@@ -15,6 +15,6 @@ class TestInvoke extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('test-controller', ['invoke' => 'Invoked Boy!']);
+        return view('test-controller', ['invoke' => 'Invoked Boy!', 'url' => $request->input('imgfile')]);
     }
 }
