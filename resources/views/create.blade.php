@@ -23,6 +23,9 @@
             .full-height {
                 height: 100vh;
             }
+            .most-height {
+                height: 80vh
+            }
 
             .flex-center {
                 align-items: center;
@@ -64,7 +67,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref most-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -78,27 +81,16 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Carousel Admin
                 </div>
-                <?php
-                    if (isset($_REQUEST['submit'])) {
-                        $filename = $_GET['imgfile'];
-                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                        echo $ext;
-                    }
-                    // else {
-                        ?>
-                    <form method="get" enctype="multipart/form-data">
-                    File name:<input type="file" name="imgfile"><br>
+                <form method="post" enctype="multipart/form-data" action="/" >
+                    @csrf
+                    <input type="file" name="imgfile">
+                    <br>
+                    <br>
                     <input type="submit" name="submit" value="upload">
-                    </form>
-                <?php
-                    // }
-                ?> 
+                </form>
             </div>
         </div>
-    </body>
-</html>

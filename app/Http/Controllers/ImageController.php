@@ -21,7 +21,7 @@ class ImageController extends Controller
             array_push($url, Storage::url($image));
         }
 
-        return view('image', ['read' => $url]);
+        return view('index', ['read' => $url]);
     }
 
     /**
@@ -31,6 +31,7 @@ class ImageController extends Controller
      */
     public function create()
     {
+        return view('create');
     }
 
     /**
@@ -42,9 +43,16 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $url = $request->imgfile->store('public/uploads');
+        $request->imgfile->store('public/uploads');
 
-        return view('image', ['url' => $url]);
+        $urlOriginal = Storage::files('public/uploads');
+        $url = [];
+
+        foreach ($urlOriginal as $image) {
+            array_push($url, Storage::url($image));
+        }
+
+        return view('index', ['read' => $url]);
     }
 
     /**
