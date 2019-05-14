@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
-    public function __construct()
+    /*
+    * @Views $imagePaths
+    *
+    * Gets Images paths from Storage to call from Views
+    */
+    public function getImages()
     {
         $imageUrls = Storage::files('/public/uploads');
         $imagePaths = [];
@@ -16,7 +21,6 @@ class ImageController extends Controller
         foreach ($imageUrls as $image) {
             array_push($imagePaths, Storage::url($image));
         }
-
         View::share('imagePaths', $imagePaths);
     }
 
@@ -27,7 +31,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $imageUrls = Storage::files('/public/uploads');
+        ImageController::getImages();
 
         return view('index');
     }
@@ -53,14 +57,7 @@ class ImageController extends Controller
     {
         $request->imgfile->store('public/uploads');
 
-        $urlOriginal = Storage::files('public/uploads');
-        $url = [];
-
-        foreach ($urlOriginal as $image) {
-            array_push($url, Storage::url($image));
-        }
-
-        return view('index', ['read' => $url]);
+        return view('create');
     }
 
     /**
