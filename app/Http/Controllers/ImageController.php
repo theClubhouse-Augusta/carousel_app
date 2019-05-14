@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -13,7 +14,14 @@ class ImageController extends Controller
      */
     public function index()
     {
-        return view('image');
+        $urlOriginal = Storage::files('public/uploads');
+        $url = [];
+
+        foreach ($urlOriginal as $image) {
+            array_push($url, Storage::url($image));
+        }
+
+        return view('image', ['read' => $url]);
     }
 
     /**
@@ -34,9 +42,9 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $url = $request->imgfile->store('uploads');
-        response()->file($pathToFile);
-        return view('images', ['url' => ]);
+        $url = $request->imgfile->store('public/uploads');
+
+        return view('image', ['url' => $url]);
     }
 
     /**
