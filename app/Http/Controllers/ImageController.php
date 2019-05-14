@@ -3,10 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
+    public function __construct()
+    {
+        $imageUrls = Storage::files('/public/uploads');
+        $imagePaths = [];
+
+        foreach ($imageUrls as $image) {
+            array_push($imagePaths, Storage::url($image));
+        }
+
+        View::share('imagePaths', $imagePaths);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,14 +27,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $urlOriginal = Storage::files('public/uploads');
-        $url = [];
+        $imageUrls = Storage::files('/public/uploads');
 
-        foreach ($urlOriginal as $image) {
-            array_push($url, Storage::url($image));
-        }
-
-        return view('index', ['read' => $url]);
+        return view('index');
     }
 
     /**
@@ -58,11 +66,10 @@ class ImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
     }
 

@@ -7,8 +7,8 @@ img {
         <?php
 
             // Test if navigated here by GET
-            if (isset($read) && !empty($read)) {
-                foreach ($read as $image) {
+            if (isset($imagePaths) && !empty($imagePaths)) {
+                foreach ($imagePaths as $image) {
                     // echo Storage::getVisibility($image);
                     // var_dump($image);
                     // echo asset($read);
