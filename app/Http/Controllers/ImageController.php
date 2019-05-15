@@ -43,13 +43,17 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(
+        $nullUpload = false,
+        $uploadSuccess = false,
+        $lastUpload = false)
     {
-        return view('create', [
-            'nullUpload' => false,
-            'uploadSuccess' => false,
-            'lastUpload' => false,
-        ]);
+        $create_status = [
+            'nullUpload' => $nullUpload,
+            'uploadSuccess' => $uploadSuccess,
+            'lastUpload' => $lastUpload, ];
+
+        return view('create', $create_status);
     }
 
     /**
@@ -61,8 +65,8 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->imgfile === '') {
-            return redirect()->route('create', [
+        if ($request->imgfile === false || $request->imgfile === null || $request->imgfile === '') {
+            return redirect()->route('image.create', [
                 'nullUpload' => true,
                 'uploadSuccess' => false,
                 'lastUpload' => false,
@@ -73,7 +77,7 @@ class ImageController extends Controller
 
         $lastUpload = Storage::url($lastUpload);
 
-        return redirect()->route('create', [
+        return redirect()->route('image.create', [
             'nullUpload' => false,
             'uploadSuccess' => true,
             'lastUpload' => $lastUpload,

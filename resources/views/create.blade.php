@@ -85,7 +85,7 @@
                 <div class="title m-b-md">
                     Carousel Admin
                 </div>
-                <form method="post" enctype="multipart/form-data" action="create" >
+                <form method="post" enctype="multipart/form-data" action="{{route('image.store')}}" >
                     @csrf
                     <input type="file" name="imgfile">
                     <br>
@@ -94,12 +94,22 @@
                 </form>
                 <div class="response" >
                 <?php
-                    if ($nullUpload) {
+                    if (!empty($_GET['uploadSuccess']) && isset($_GET['uploadSuccess'])) {
+                        $nullUpload = $_GET['nullUpload'];
+                        $uploadSuccess = $_GET['uploadSuccess'];
+                        $lastUpload = $_GET['lastUpload'];
+                    }
+                    var_dump($nullUpload);
+                    echo '<br>';
+                    var_dump($uploadSuccess);
+                    echo '<br>';
+                    var_dump($lastUpload);
+                    if ((int) $nullUpload !== 0) {
                         ?>
-                    <p><?php echo "Didn't get anything."; ?></p>
+                    <p><?php echo "Didn't get anything. Did you even try and upload a file?"; ?></p>
                 <?php
                     }
-                    if ($uploadSuccess) {
+                    if ((int) $uploadSuccess !== 0) {
                         ?>
                         <p>Your Last upload was: </p>
                         <img src="<?php echo $lastUpload; ?>" style="max-width: 200px;"  alt="<?php echo $lastUpload; ?>">

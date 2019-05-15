@@ -30,7 +30,7 @@ opacity: .2;
 </style>
 
 <nav>
-    <a href="create"><button>Want to add some images?</button></a>
+    <a href="image/create"><button>Want to add some images?</button></a>
 </nav>
         <?php
 
