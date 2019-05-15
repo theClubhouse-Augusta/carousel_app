@@ -21,7 +21,8 @@ class ImageController extends Controller
         foreach ($imageUrls as $image) {
             array_push($imagePaths, Storage::url($image));
         }
-        View::share('imagePaths', $imagePaths);
+
+        return View::share('imagePaths', $imagePaths);
     }
 
     /**
@@ -43,7 +44,11 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('create', [
+            'nullUpload' => false,
+            'uploadSuccess' => false,
+            'lastUpload' => false,
+        ]);
     }
 
     /**
@@ -55,9 +60,23 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->imgfile->store('public/uploads');
+        if ($request->imgfile === '') {
+            return redirect()->route('create', [
+                'nullUpload' => true,
+                'uploadSuccess' => false,
+                'lastUpload' => false,
+                ]);
+        }
 
-        return view('create');
+        $lastUpload = $request->imgfile->store('public/uploads');
+
+        $lastUpload = Storage::url($lastUpload);
+
+        return redirect()->route('create', [
+            'nullUpload' => false,
+            'uploadSuccess' => true,
+            'lastUpload' => $lastUpload,
+            ]);
     }
 
     /**
@@ -102,5 +121,8 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
+        Storage::delete($id);
+
+        return redirect()->route('/');
     }
 }

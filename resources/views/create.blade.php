@@ -92,5 +92,19 @@
                     <br>
                     <input type="submit" name="submit" value="upload">
                 </form>
+                <div class="response" >
+                <?php
+                    if ($nullUpload) {
+                        ?>
+                    <p><?php echo "Didn't get anything."; ?></p>
+                <?php
+                    }
+                    if ($uploadSuccess) {
+                        ?>
+                        <p>Your Last upload was: </p>
+                        <img src="<?php echo $lastUpload; ?>" style="max-width: 200px;"  alt="<?php echo $lastUpload; ?>">
+                    <?php
+                    } ?>
+                </div>
             </div>
         </div>
