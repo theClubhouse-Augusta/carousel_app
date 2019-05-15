@@ -16,6 +16,7 @@ class ImageController extends Controller
     public function getImages()
     {
         $imageUrls = Storage::files('/public/uploads');
+
         $imagePaths = [];
 
         foreach ($imageUrls as $image) {
@@ -121,8 +122,16 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        Storage::delete($id);
+        // $url = Storage::url($id);
 
-        return redirect()->route('/');
+        // $return = Storage::disk('local')->exists('/public/storage/uploads'.$id);
+
+        // $return = $return ? 'true' : 'false';
+
+        Storage::delete('public/uploads/'.$id);
+
+        $imageUrls = Storage::files('/public/uploads');
+
+        return view('index');
     }
 }

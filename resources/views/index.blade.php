@@ -33,8 +33,10 @@ input:hover {
                     $imageId = explode('/', $imagePath);
                     $imageId = implode('/', array_slice($imageId, 3, (sizeof($imageId) - 1))); ?>
 
-                    <form action="/" method="post">
+                    <form action="{{route('image.destroy', ['image' => $imageId])}}" method="post">
+                        @csrf
                         <input type="hidden" name="_method" value="DELETE">
+                        <!-- <input type="hidden" name="id" value="{{ $imageId }}" > -->
                         <img src="<?php echo $imagePath; ?>" alt="">
                         <input type="submit" value="" style="background-image: url( <?php echo $imagePath; ?>); " >
                     </form>

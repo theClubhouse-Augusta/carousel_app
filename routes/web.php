@@ -11,4 +11,10 @@
 |
 */
 
-Route::resource('/', 'ImageController');
+Route::resource('image', 'ImageController');
+
+// ->except('delete');
+
+// Route::delete('hello/{id}', 'ImageController@destroy');
+
+// Route::get('/', 'imageController@index');

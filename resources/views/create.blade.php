@@ -85,7 +85,7 @@
                 <div class="title m-b-md">
                     Carousel Admin
                 </div>
-                <form method="post" enctype="multipart/form-data" action="/" >
+                <form method="post" enctype="multipart/form-data" action="create" >
                     @csrf
                     <input type="file" name="imgfile">
                     <br>
