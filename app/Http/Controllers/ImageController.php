@@ -132,6 +132,6 @@ class ImageController extends Controller
 
         $imageUrls = Storage::files('/public/uploads');
 
-        return view('index');
+        return redirect()->route('image.index');
     }
 }

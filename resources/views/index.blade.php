@@ -5,8 +5,8 @@ form {
 }
 img {
     max-width: 200px;
-    margin: 20px;
-    visibility: hidden;
+    opacity: 1;
+    margin: 5px;
 }
 input {
     position: absolute;
@@ -19,12 +19,19 @@ input {
     box-shadow: none;
     background-size: contain;
     background-repeat: no-repeat;
+    opacity: 0;
 }
 
-input:hover {
-    cursor: pointer;
+form:hover img {
+opacity: .2;
 }
+
+
 </style>
+
+<nav>
+    <a href="create"><button>Want to add some images?</button></a>
+</nav>
         <?php
 
             // Test if navigated here by GET
