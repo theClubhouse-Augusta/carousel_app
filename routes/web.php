@@ -13,4 +13,4 @@
 
 Route::resource('image', 'ImageController');
 
-Route::get('/', 'carouselController@index');
+Route::get('/', 'CarouselController@index');

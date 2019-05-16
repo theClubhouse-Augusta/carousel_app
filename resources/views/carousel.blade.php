@@ -5,7 +5,7 @@
 <h1>Does this work?</h1>
 
 <div id="app" >
-    <carousel-component></carousel-component>
+        <carousel-component v-bind:image-paths='{{ json_encode($imagePaths) }}' ></carousel-component>
 </div>
 
 <script src="js/app.js" ></script>
