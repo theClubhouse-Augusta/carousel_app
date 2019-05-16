@@ -19,12 +19,11 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
             .most-height {
-                height: 80vh
+                /* height: 80vh */
             }
 
             .flex-center {
@@ -42,7 +41,10 @@
                 right: 10px;
                 top: 18px;
             }
-
+            nav {
+                display: block;
+                margin: 20px
+            }
             .content {
                 text-align: center;
             }
@@ -67,6 +69,11 @@
         </style>
     </head>
     <body>
+        <nav>
+            <a href="../image">
+                <button>Check out all 'em images</button>
+            </a>
+        </nav>
         <div class="flex-center position-ref most-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -85,6 +92,8 @@
                 <div class="title m-b-md">
                     Carousel Admin
                 </div>
+
+
                 <form method="post" enctype="multipart/form-data" action="{{route('image.store')}}" >
                     @csrf
                     <input type="file" name="imgfile">
@@ -94,16 +103,11 @@
                 </form>
                 <div class="response" >
                 <?php
-                    if (!empty($_GET['uploadSuccess']) && isset($_GET['uploadSuccess'])) {
+                    if (!empty($_GET['uploadSuccess']) || isset($_GET['uploadSuccess'])) {
                         $nullUpload = $_GET['nullUpload'];
                         $uploadSuccess = $_GET['uploadSuccess'];
                         $lastUpload = $_GET['lastUpload'];
                     }
-                    var_dump($nullUpload);
-                    echo '<br>';
-                    var_dump($uploadSuccess);
-                    echo '<br>';
-                    var_dump($lastUpload);
                     if ((int) $nullUpload !== 0) {
                         ?>
                     <p><?php echo "Didn't get anything. Did you even try and upload a file?"; ?></p>

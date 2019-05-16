@@ -3,10 +3,22 @@ form {
     display: inline-block;
     position: relative;
 }
+.delete {
+    position: relative;
+}
+.delete>p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+}
 img {
     max-width: 200px;
-    opacity: 1;
     margin: 5px;
+    opacity: 1;
 }
 input {
     position: absolute;
@@ -22,8 +34,11 @@ input {
     opacity: 0;
 }
 
-form:hover img {
-opacity: .2;
+form:hover .delete>img {
+    opacity: .2;
+}
+form:hover .delete>p {
+    opacity: .8;
 }
 
 
@@ -44,7 +59,10 @@ opacity: .2;
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
                         <!-- <input type="hidden" name="id" value="{{ $imageId }}" > -->
-                        <img src="<?php echo $imagePath; ?>" alt="">
+                        <div class="delete" >
+                            <p>Delete!</p>
+                            <img src="<?php echo $imagePath; ?>" alt="">
+                        </div>
                         <input type="submit" value="" style="background-image: url( <?php echo $imagePath; ?>); " >
                     </form>
 
