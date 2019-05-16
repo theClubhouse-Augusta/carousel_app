@@ -1771,8 +1771,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
+    document.querySelector('.carousel-inner')['childNodes'][0].classList.add('active');
     console.log("Component was Mounted and we're workin");
   },
   props: ['imagePaths']
@@ -37724,19 +37729,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("p", [_vm._v("Here we go this is the start of everything.")]),
-      _vm._v(" "),
-      _vm._l(_vm.imagePaths, function(image) {
-        return _c("div", { key: image }, [
-          _c("img", { attrs: { src: image, alt: "" } })
-        ])
-      })
-    ],
-    2
-  )
+  return _c("div", [
+    _c("p", [_vm._v("Here we go this is the start of everything.")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "carousel slide",
+        attrs: { id: "carouselExampleSlidesOnly", "data-ride": "carousel" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "carousel-inner" },
+          _vm._l(_vm.imagePaths, function(image) {
+            return _c(
+              "div",
+              {
+                key: image,
+                staticClass: "carousel-item",
+                attrs: { "data-interval": "1000" }
+              },
+              [
+                _c("img", {
+                  staticClass: "d-block w-100",
+                  attrs: { src: image, alt: "..." }
+                })
+              ]
+            )
+          }),
+          0
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
