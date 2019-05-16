@@ -6,3 +6,12 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+#theclogo {
+    position: fixed;
+    z-index: 5;
+    bottom: 50px;
+    right: 50px;
+    width: 200px;
+    height: 200px;
+}

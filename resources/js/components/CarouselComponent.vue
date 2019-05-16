@@ -29,11 +29,5 @@ export default {
     background-size: cover
     background-position: center
 
-img 
-    min-height: 100vh
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
 </style>
 

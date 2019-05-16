@@ -6243,7 +6243,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".imageContainer {\n  height: 100vh;\n  position: relative;\n  overflow: hidden;\n  background-size: cover;\n  background-position: center;\n}\nimg {\n  min-height: 100vh;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".imageContainer {\n  height: 100vh;\n  position: relative;\n  overflow: hidden;\n  background-size: cover;\n  background-position: center;\n}", ""]);
 
 // exports
 
