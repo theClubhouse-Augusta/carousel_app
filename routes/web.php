@@ -13,8 +13,4 @@
 
 Route::resource('image', 'ImageController');
 
-// ->except('delete');
-
-// Route::delete('hello/{id}', 'ImageController@destroy');
-
-// Route::get('/', 'imageController@index');
+Route::get('/', 'carouselController@index');
