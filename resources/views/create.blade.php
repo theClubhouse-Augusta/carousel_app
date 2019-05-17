@@ -19,9 +19,11 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
+            }
+            .most-height {
+                /* height: 80vh */
             }
 
             .flex-center {
@@ -39,7 +41,10 @@
                 right: 10px;
                 top: 18px;
             }
-
+            nav {
+                display: block;
+                margin: 20px
+            }
             .content {
                 text-align: center;
             }
@@ -64,7 +69,12 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <nav>
+            <a href="../image">
+                <button>Check out all 'em images</button>
+            </a>
+        </nav>
+        <div class="flex-center position-ref most-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -78,27 +88,37 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Carousel Admin
                 </div>
-                <?php
-                    if (isset($_REQUEST['submit'])) {
-                        $filename = $_GET['imgfile'];
-                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                        echo $ext;
-                    }
-                    // else {
-                        ?>
-                    <form method="get" enctype="multipart/form-data">
-                    File name:<input type="file" name="imgfile"><br>
+
+
+                <form method="post" enctype="multipart/form-data" action="{{route('image.store')}}" >
+                    @csrf
+                    <input type="file" name="imgfile">
+                    <br>
+                    <br>
                     <input type="submit" name="submit" value="upload">
-                    </form>
+                </form>
+                <div class="response" >
                 <?php
-                    // }
-                ?> 
+                    if (!empty($_GET['uploadSuccess']) || isset($_GET['uploadSuccess'])) {
+                        $nullUpload = $_GET['nullUpload'];
+                        $uploadSuccess = $_GET['uploadSuccess'];
+                        $lastUpload = $_GET['lastUpload'];
+                    }
+                    if ((int) $nullUpload !== 0) {
+                        ?>
+                    <p><?php echo "Didn't get anything. Did you even try and upload a file?"; ?></p>
+                <?php
+                    }
+                    if ((int) $uploadSuccess !== 0) {
+                        ?>
+                        <p>Your Last upload was: </p>
+                        <img src="<?php echo $lastUpload; ?>" style="max-width: 200px;"  alt="<?php echo $lastUpload; ?>">
+                    <?php
+                    } ?>
+                </div>
             </div>
         </div>
-    </body>
-</html>
