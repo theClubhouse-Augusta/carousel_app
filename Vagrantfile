@@ -1,5 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+  ENV["GEM_PATH"] = nil
+  ENV["GEM_HOME"] = nil
 
 Vagrant.configure("2") do |config|
 

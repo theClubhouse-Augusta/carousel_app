@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('image', 'ImageController');
 
-Route::view('admin', 'admin');
-
-Route::view('test', 'test');
+Route::get('/', 'CarouselController@index');

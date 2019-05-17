@@ -1,5 +1,6 @@
-<?php
+<h1>Hello</h1>
 
-echo "We're working";
+<pre>
 
-$myfile = fopen('testfile.txt', 'w');
+<?php var_dump($images); ?>
+</pre>
