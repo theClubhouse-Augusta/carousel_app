@@ -33,6 +33,8 @@ class ImageController extends Controller
      */
     public function index()
     {
+        App::make('files')->link(storage_path('app/public'), public_path('storage'));
+
         ImageController::getImages();
 
         return view('index');
@@ -65,6 +67,8 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
+        App::make('files')->link(storage_path('app/public/uploads'), public_path('storage/uploads'));
+
         if ($request->imgfile === false || $request->imgfile === null || $request->imgfile === '') {
             return redirect()->route('image.create', [
                 'nullUpload' => true,
@@ -74,6 +78,7 @@ class ImageController extends Controller
         }
 
         $lastUpload = $request->imgfile->store('public/uploads');
+        // $lastUpload = Storage::disk('s3')->url($request->imgfile);
 
         $lastUpload = Storage::url($lastUpload);
 
@@ -126,6 +131,7 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
+        App::make('files')->link(storage_path('app/public'), public_path('storage'));
         // $url = Storage::url($id);
 
         // $return = Storage::disk('local')->exists('/public/storage/uploads'.$id);
