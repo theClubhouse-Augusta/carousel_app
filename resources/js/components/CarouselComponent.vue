@@ -22,6 +22,7 @@ export default {
 // I don't know how to do a sweet carousel transition using boot strap carousel
 // We'll get there though.
 // This comment is for a server test
+
 </script>
 
 <style lang="sass">
