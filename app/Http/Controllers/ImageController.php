@@ -33,7 +33,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        App::make('files')->link(storage_path('app/public'), public_path('storage'));
+        // App::make('files')->link(storage_path('app/public'), public_path('storage'));
 
         ImageController::getImages();
 
@@ -131,7 +131,7 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        App::make('files')->link(storage_path('app/public'), public_path('storage'));
+        // App::make('files')->link(storage_path('app/public'), public_path('storage'));
         // $url = Storage::url($id);
 
         // $return = Storage::disk('local')->exists('/public/storage/uploads'.$id);
