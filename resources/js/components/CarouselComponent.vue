@@ -18,6 +18,7 @@ export default {
         console.log("Component was Mounted and we're workin");
     },
     props: ['imagePaths']
+    
 }
 </script>
 
