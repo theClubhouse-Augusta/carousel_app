@@ -17,7 +17,7 @@ export default {
         document.querySelector('.carousel-inner')['childNodes'][0].classList.add('active');
         console.log("Component was Mounted and we're workin");
     },
-    props: ['imagePath']
+    props: ['imagePaths']
 
 }
 </script>
