@@ -1,7 +1,7 @@
 <template>
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner" >
-            <div v-bind:key="image" v-for="image in imagePaths" class="carousel-item" data-interval="5000" >
+            <div v-bind:key="image" v-for="image in imagePaths" class="carousel-item" data-interval="10000" >
                 <!-- <div class="imageContainer d-block w-100">
                     <img v-bind:src='image' alt="...">
                 </div> -->
@@ -28,6 +28,9 @@ export default {
     overflow: hidden
     background-size: cover
     background-position: center
+
+$carousel-transition: transform 2s ease, opacity .5s ease-out
+
 
 </style>
 
