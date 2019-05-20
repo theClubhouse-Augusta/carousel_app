@@ -1,6 +1,8 @@
 # Carousel App
 
-Started in Laravel using a sqlite db.
-
 ## To start Laravel server
 - `php artisan serve`
+- In prod 
+    - `touch .env`
+    - `php artisan key:generate`
+    - don't forget `php artisan storage:link`
