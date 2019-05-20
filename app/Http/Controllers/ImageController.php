@@ -67,7 +67,7 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        App::make('files')->link(storage_path('app/public/uploads'), public_path('storage/uploads'));
+        // App::make('files')->link(storage_path('app/public/uploads'), public_path('storage/uploads'));
 
         if ($request->imgfile === false || $request->imgfile === null || $request->imgfile === '') {
             return redirect()->route('image.create', [
