@@ -30,7 +30,5 @@ export default {
     background-position: center
 
 $carousel-transition: transform 2s ease, opacity .5s ease-out
-
-
 </style>
 
