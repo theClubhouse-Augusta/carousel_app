@@ -23,6 +23,7 @@ export default {
 // We'll get there though.
 // This comment is for a server test
 
+
 </script>
 
 <style lang="sass">
